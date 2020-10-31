@@ -1,0 +1,21 @@
+# First in the oringal Excel file LGPA Data.xlsx, 
+# all the data are put into one column, and the data in different categories are just separated by spaces. 
+# Therefore, first use the column split function in Excel to divide each data group based on white spaces into different columns. 
+# Then name each column in R.
+
+
+
+library(readxl)
+df = read_excel("C:/Users/Yue Sun/Desktop/msca/fall 2020/msca 31015 consulting/week 5/LPGA Data.xlsx", col_names = FALSE)
+
+df2 = data.frame("Golfer id" = df$...1, "average drive (yards)" = df$...2,
+                 "percent of fairways hit" = df$...3, "percent of greens reached in regulation" = df$...4,
+                 "average putts per round" = df$...5, "percent of sand saves (2 shots to hole)" = df$...6,
+                 "prize winnings ($1000s)" = df$...7 ,"ln(prize)" = df$...8, "tournaments played in" = df$...9,
+                 "green in regulation putts per hole" = df$...10, "completed tournaments" = df$...11,
+                 "average percentile in tournaments (high is good)" = df$...12,
+                 "rounds completed " = df$...13, "average strokes per round" = df$...14)
+View(df2)
+#install.packages("xlsx")
+#library(xlsx)
+write.xlsx(df2, "C:/Users/Yue Sun/Desktop/msca/fall 2020/msca 31015 consulting/week 5/formatted LPGA Data.xlsx")
